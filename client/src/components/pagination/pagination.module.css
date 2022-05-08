@@ -1,0 +1,26 @@
+
+  .pagination {
+    background-color: #bd7976;
+    color: #fff;
+    border-radius: 0.2rem;
+    border: transparent;
+    cursor: pointer;
+    padding: 1%;
+    margin: 1%;
+  }
+
+  .pagination:hover {
+    transform: scale(1.05, 1.05);
+  }
+   .pagination:focus{
+    color: pink;
+    background: white;
+   }
+
+  .display{
+    display: flex;
+    justify-content: center;
+    margin: 0.1%;
+  }
+
+  

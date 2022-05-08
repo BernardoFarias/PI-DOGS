@@ -1,0 +1,36 @@
+.nav   { 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: #bd797685;
+}
+
+.logoNav{
+    border-radius: 10%;
+    margin-left: 20px;
+    width: 60px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.logoNav:hover {
+    transform: scale(1.05, 1.05);
+  }
+
+.buttons{
+    background-color: #bd7976;
+    padding: 1.4%;
+    color: #fff;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 84%;
+    border: transparent;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    transform: scale(1.05, 1.05);
+  }

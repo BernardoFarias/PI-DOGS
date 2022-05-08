@@ -1,0 +1,59 @@
+.display {
+    background-color: #f8d8c1;
+    min-height: 100vh;
+}
+
+
+.home {
+    background-color: #F6D2C3;
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    align-items: center;
+}
+
+.filterContainer{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.fieldSet{
+    width: 100%;
+    border-style: solid;
+    border-color: lightyellow;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.filter{
+    width: 40%;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dogsContainer{
+    margin: 0.1%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.title{
+    color: #fff;
+    font-weight: bold;
+    font-size: 32px;
+    margin: 5%;
+}
+
+.searchContainer{
+    background: #ffffff6e;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
