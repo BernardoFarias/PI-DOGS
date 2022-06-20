@@ -5,15 +5,32 @@ var urlImg = /(https?:\/\/.*\.(?:png|jpg))/i;
 export default function validate(input){
     let errors = {};
 
-    // if (!input.name) {
-    //     errors.name = "A name is required";
-    // }
-    if(input.name !== ""){
-        if(!validateName.test(input.name)){
-        errors.name = "Only letters are allowed"
-        } else if (input.name.length < 3 || input.name.length > 20) {
-        errors.name = "The name must have a length between 3 and 20 characters";
-        }
+    if (!input.name) {
+        errors.name = "A name is required";
+    }
+    if (!input.minHeight) {
+        errors.minHeight = "Height is required";
+    }
+    if (!input.maxHeight) {
+        errors.maxHeight = "Height is required";
+    }
+    if (!input.minWeight) {
+        errors.minWeight = "Weight is required";
+    }
+    if (!input.maxWeight) {
+        errors.maxWeight = "Weight is required";
+    }
+    if (!input.lifeMax) {
+        errors.lifeMax = "Life is required";
+    }
+    if (!input.lifeMin) {
+        errors.lifeMin = "Life is required";
+    }
+
+    if(!validateName.test(input.name)){
+    errors.name = "Only letters are allowed"
+    } else if (input.name.length < 3 || input.name.length > 20) {
+    errors.name = "The name must have a length between 3 and 20 characters";
     }
 
     if(!urlImg.test(input.image) && input.image !== ""){

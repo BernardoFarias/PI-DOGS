@@ -37,10 +37,10 @@
 }
 
 .dogsContainer{
-    margin: 0.1%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    margin: 10px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
 }
 
 .title{
@@ -56,4 +56,28 @@
     padding: 10px 20px;
     cursor: pointer;
 }
+
+.loadingContainer{
+    display: flex;
+    justify-content: center;
+    padding-top: 125px;
+}
+
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loadingSpinner {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+
+
+
 

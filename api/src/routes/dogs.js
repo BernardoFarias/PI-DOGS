@@ -135,6 +135,7 @@ const breedDog = async (name) => {
     }
 }
 
+
 router.get("/", async (req, res) => {
     const {name} = req.query;
     try {
@@ -173,6 +174,8 @@ const dbId = async (id) => {
                 },
             },
         })
+
+        console.log(idDb)
         return {
             id: id,
             name: idDb.name,
@@ -209,6 +212,21 @@ router.get("/:id", async (req, res) => {
         return res.send(idParams)
     }
     return res.status(404).json({msg: "The ID was not found"})
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.delete("/", async (req, res) => {
+
+    const {id} = req.body;
+    try {
+        deletedDogs = await Dog.destroy({
+            where: {
+                id: id,
+            }
+        })
+    return res.status(200).json({msg: "The dog was deleted"})
     } catch (error) {
         console.log(error)
     }

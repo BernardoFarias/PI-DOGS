@@ -6,6 +6,7 @@ import Pagination from "../pagination/pagination";
 import s from "./home.module.css"
 import Nav from "../navBar/navBar";
 
+
 export default function Home(){
     const temps = useSelector(state => state.temps)
     const allDogs = useSelector(state => state.dogsShowed)
@@ -33,40 +34,44 @@ export default function Home(){
     }
 
     useEffect(()=> {
-        const getData = async () => {
-        await dispatch(getDogs())
-        await dispatch(getTemps());
-        setLoading(false)
-        }
-        getData()
+        setLoading(true)
+        dispatch(getDogs())
+        dispatch(getTemps());
+        setTimeout(function(){
+            setLoading(false)
+        }, 1000);
     }, [dispatch])
+
+    useEffect(()=> {
+        setCurrentPage(1);    
+    }, [allDogs])
 
     function handleFilterTemp(e){
         e.preventDefault()
         dispatch(filterByOrigin(filterCrea))
         dispatch(filterByTemps(e.target.value))
-        setCurrentPage(1);
+        
     }
 
     function handleFilterOrigin(e){
         e.preventDefault()
         dispatch(filterByOrigin(e.target.value))
         dispatch(filterByTemps(filterTemp))
-        setCurrentPage(1)
+
     }
 
     function handleSortName(e){
         e.preventDefault();
         dispatch(sortName(e.target.value));
         setSort(`Sorted by name: ${e.target.value}`);
-        setCurrentPage(1);
+
     }
 
     function handleSortWeight(e){
         e.preventDefault();
         dispatch(sortWeight(e.target.value));
         setSort(`Sorted by weight: ${e.target.value}`);
-        setCurrentPage(1)
+     
     }
 
     function handleInput(e){
@@ -77,7 +82,6 @@ export default function Home(){
     function handleSearch(e){
         e.preventDefault();
         dispatch(searchName(name));
-        setCurrentPage(1);
     }
 
     return(  
@@ -132,6 +136,14 @@ export default function Home(){
             </div>
             </div>
             <div className={s.display}>
+            {loading ? (
+                <div className={s.loadingContainer}>
+                <img src="https://i.pinimg.com/564x/1e/ec/21/1eec210496dfa2127da662e857d6bb86.jpg" alt="hola" className={s.loadingSpinner}
+                ></img>
+                
+                </div>
+            ) : (
+                <>
                 <Pagination
                 paginated={paginated}
                 currentPage={currentPage}
@@ -141,14 +153,7 @@ export default function Home(){
                 />
             
             
-            {loading ? (
-                <>
-                <p className={s.title}>Calling the pack of dogs...</p>
-                <iframe src="https://giphy.com/embed/ONip6r6SCtpZu" width="480" height="365" 
-                frameBorder="0" title="giphy-embed" allowFullScreen></iframe>
-                
-                </>
-            ) : (
+            
             <div className={s.dogsContainer}>
                 {currentDogs.length > 0 ? 
                 (currentDogs?.map((e) => {
@@ -167,6 +172,7 @@ export default function Home(){
                 <p className={s.title}>No dog found</p>
                 )}
             </div>
+            </>
             )}
             </div>
         </>

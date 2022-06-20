@@ -19,18 +19,58 @@
     transform: scale(1.05, 1.05);
   }
 
-.buttons{
-    background-color: #bd7976;
-    padding: 1.4%;
-    color: #fff;
-    border-radius: 10px;
-    margin: 1%;
-    font-size: 84%;
-    border: transparent;
-    text-decoration: none;
+  .searchContainer{
+    background: #ffffff6e;
+    border-radius: 30px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
-.buttons:hover {
-    transform: scale(1.05, 1.05);
-  }
+.divButtons{
+    display: flex;
+    height: 100px;
+    align-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 5px;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 55px;
+	background: #bd7976;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
+	transition: 1s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.button span {
+	position: relative;
+	z-index: 2;
+	transition: .3s ease all;
+}
+
+.button::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background:#bd2612;
+	position: absolute;
+	z-index: 1;
+	top: -80px;
+	left: 0;
+	transition: .3s ease-in-out all;
+}
+
+.button:hover::after {
+	top: 0;
+}

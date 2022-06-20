@@ -92,18 +92,45 @@ input:hover {
     background-color: #f8d8c1;
 }
 
-.button{
-    background-color: #bd7976;
-    padding: 1.4%;
-    color: #fff;
-    border-radius: 10px;
-    margin: 1%;
-    font-size: 150%;
-    border: transparent;
-    text-decoration: none;
-    cursor: pointer;
+
+  .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20%;
+	height: 80px;
+	background: #bd7976;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: 1s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
 }
 
-button:hover {
-    transform: scale(1.05, 1.05);
-  }
+.button span {
+	position: relative;
+	z-index: 2;
+	transition: .3s ease all;
+}
+
+.button::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background:#bd2612;
+	position: absolute;
+	z-index: 1;
+	top: -80px;
+	left: 0;
+	transition: .3s ease-in-out all;
+}
+
+.button:hover::after {
+	top: 0;
+}

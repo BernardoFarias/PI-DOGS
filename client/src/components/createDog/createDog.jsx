@@ -24,7 +24,15 @@ export default function DogDetail(){
         image: ""
     })
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({
+        name: "",
+        lifeMax: "",
+        maxWeight: "",
+        maxHeight: "",
+        lifeMini: "",
+        minWeight: "",
+        minHeight: "",
+    })
 
     useEffect(() => {
         dispatch(getTemps())
@@ -45,6 +53,7 @@ export default function DogDetail(){
     }
 
     const handleChange = (e) => {
+        console.log(errors)
         setInput({
             ...input,
             [e.target.name]: e.target.value,
@@ -60,6 +69,7 @@ export default function DogDetail(){
 
     function handleSubmit(e){
         e.preventDefault();
+        if(Object.keys(errors).length === 0 && input.temps.length > 0){
         dispatch(postDog(
             {
         name: `${input.name}`,
@@ -73,6 +83,7 @@ export default function DogDetail(){
         alert("Dog created!");
         resetInput();
         navigate("/Dogs");
+        } else {alert("All inputs must be filled!")}
     }
 
     function handleCheckbox(e){
@@ -96,7 +107,7 @@ export default function DogDetail(){
             <img src="https://previews.123rf.com/images/photodeti/photodeti1802/photodeti180200028/95646477-hund-arbeiter-mit-werkzeugg%C3%BCrtel-h%C3%A4lt-hammer-und-daumen-hoch-getrennt-auf-wei%C3%9Fem-hintergrund.jpg" 
             alt="" className={s.imgContainer}/>
             <form onSubmit={(e) => handleSubmit(e)}>
-            <h1 className={s.title}>Build your dog breed</h1>
+            <h1 className={s.title}>Build your dog breed!</h1>
                 <div className={s.divInput}>
                     <label className={s.subtitle}>Name</label>
                     <input 
@@ -190,14 +201,11 @@ export default function DogDetail(){
             
                 </div>
                 {errors.image && <p className={s.error}>{errors.image}</p>}
-            </form>
-            
-            </div>
-            <div className={s.tempsContainer}>
+                <div className={s.tempsContainer}>
                     <label className={s.subtitle}>Temperaments</label>
                     {temps?.map((e) => (
-                        <span className={s.checkbox}>
-                        <label key={e.name} className={s.temps}>
+                        <span key={e.name} className={s.checkbox}>
+                        <label  className={s.temps}>
                             <input
                             type="checkbox"
                             value={e.name}
@@ -209,10 +217,12 @@ export default function DogDetail(){
                         </span>
                     ))}
                     
-            </div>
-            <div className={s.buttonContainer}>
-            <button className={s.button}>Create</button>
-            </div>
+                </div>
+                <div className={s.buttonContainer}>
+                    <button className={s.button}><span>Create</span></button>
+                </div>
+            </form>
         </div>
+    </div>
     )
 }

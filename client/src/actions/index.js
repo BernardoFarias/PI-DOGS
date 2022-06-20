@@ -81,3 +81,13 @@ export function sortWeight(payload){
         payload
     }
 }
+
+export function addFavorite(id){
+    return async function(dispatch){
+        const json = await axios.get(`http://localhost:3001/dogs/${id}`);
+        return dispatch({
+            type: "ADD_FAVORITE",
+            payload: json.data
+        })
+    }  
+}

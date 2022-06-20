@@ -5,6 +5,7 @@ const initialState = {
     detail: [],
     filtroTemp: "All",
     filtroCrea: "All",
+    dogsFavorites: []
 }
 function rootReducer(state= initialState, action){
     switch (action.type) {
@@ -96,6 +97,16 @@ function rootReducer(state= initialState, action){
                     ...state.sortFilter,
                     sortWeight: action.payload
                 }
+            }
+        case "ADD_FAVORITE":
+            const currentFavorites = state.dogsFavorites
+            const dogsFavoritesFind = currentFavorites && currentFavorites.find((d) => d.id === action.payload.id)
+            const dogsFavorites = dogsFavoritesFind 
+            ? currentFavorites.filter((d) => d.id !== action.payload.id) 
+            : [...state.dogsFavorites, action.payload]
+            return {
+                ...state,
+                dogsFavorites: dogsFavorites
             }
         default:
             return state;

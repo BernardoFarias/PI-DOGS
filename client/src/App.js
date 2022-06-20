@@ -4,6 +4,7 @@ import LandingPage from './components/landingPage/landingPage';
 import Home from './components/home/home';
 import DogDetail from './components/dogDetail/dogDetail';
 import CreateDog from './components/createDog/createDog';
+import Favorites from './components/Favorites/Favorites';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/Dogs" element={<Home/>}/>
       <Route path="Dogs/:id" element={<DogDetail/>}/>
       <Route path="/Create" element={<CreateDog/>}/>
+      <Route path="/Favorites" element={<Favorites/>}/>
       </Routes>
     </div>
   );
